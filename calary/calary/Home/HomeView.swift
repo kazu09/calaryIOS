@@ -1,12 +1,12 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //
 //  Copyright © 2026 kazu09. All rights reserved.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -19,5 +19,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }
