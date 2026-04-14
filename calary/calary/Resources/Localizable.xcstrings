@@ -1,0 +1,59 @@
+{
+  "sourceLanguage" : "ja",
+  "strings" : {
+    "Hello, Grammar View!" : {
+
+    },
+    "Hello, Settings View!" : {
+
+    },
+    "Hello, Word View!" : {
+
+    },
+    "Hello, world!" : {
+
+    },
+    "tab.grammar" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英文法"
+          }
+        }
+      }
+    },
+    "tab.home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム"
+          }
+        }
+      }
+    },
+    "tab.settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    },
+    "tab.word" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.2"
+}

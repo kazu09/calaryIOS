@@ -10,7 +10,7 @@ import SwiftUI
 struct calaryApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            RootTabView()
         }
     }
 }
