@@ -8,14 +8,70 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color.backgroundBlue
+                .ignoresSafeArea()
+            
+            VStack(spacing: 0) {
+                HStack {
+                    Spacer()
+                    
+                    Button {
+                    // 設定画面へ
+                    } label: {
+                        Image(systemName: "gearshape")
+                            .font(.system(size: 20))
+                            .foregroundStyle(.titleText)
+                    }
+                }
+                .overlay {
+                    Text("Calary")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.titleText)
+                        .bold()
+                        .italic()
+                }
+                .padding(.horizontal, 16)
+                .padding(.top, 16)
+                .padding(.bottom, 18)
+                
+                HStack {
+                    Button {
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(.text)
+                            .padding(.leading,12)
+                            .padding(.trailing,4)
+                    }
+
+                    Text("2026年4月")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.text)
+                        .bold()
+                        .italic()
+
+                    Button {
+                    } label: {
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(.text)
+                            .padding(.leading,4)
+                    }
+                }
+                .padding(.horizontal, 16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                Divider()
+                
+                VStack {
+                    
+                    DiaryCardView()
+                }
+                .padding(16)
+                
+                Spacer()
+            }
+            
+            }
         }
-        .padding()
-    }
 }
 
 #Preview {
