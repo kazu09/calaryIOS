@@ -1,16 +1,16 @@
 {
   "sourceLanguage" : "ja",
   "strings" : {
+    "2026年4月" : {
+
+    },
+    "Calary" : {
+
+    },
     "Hello, Grammar View!" : {
 
     },
     "Hello, Settings View!" : {
-
-    },
-    "Hello, Word View!" : {
-
-    },
-    "Hello, world!" : {
 
     },
     "tab.grammar" : {
@@ -53,6 +53,12 @@
           }
         }
       }
+    },
+    "ハーフモーダルの中身" : {
+
+    },
+    "単語" : {
+
     }
   },
   "version" : "1.2"
