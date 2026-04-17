@@ -1,13 +1,13 @@
 {
   "sourceLanguage" : "ja",
   "strings" : {
+    "2026/4/30" : {
+
+    },
     "2026年4月" : {
 
     },
     "Calary" : {
-
-    },
-    "Hello, Grammar View!" : {
 
     },
     "Hello, Settings View!" : {
@@ -54,10 +54,19 @@
         }
       }
     },
+    "TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText" : {
+
+    },
+    "word.title" : {
+
+    },
     "ハーフモーダルの中身" : {
 
     },
-    "単語" : {
+    "現在完了形（have been）" : {
+
+    },
+    "英文法メモ" : {
 
     }
   },

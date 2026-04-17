@@ -16,21 +16,21 @@ struct DiaryCardView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack{
                 Text(cardDate)
-                    .foregroundStyle(.diaryCardText)
+                    .foregroundStyle(.textTertiary)
                     .font(.custom("HiraginoSans-W3", size: 14))
                     .fontWeight(.bold)
                 Spacer()
                 Text(checkAnswer)
-                    .foregroundStyle(.notAnswertext)
+                    .foregroundStyle(.textMuted)
                     .font(.custom("HiraginoSans-W3", size: 14))
                     .fontWeight(.bold)
             }
             .padding(.bottom, 14)
             Text(enTitle)
-                .foregroundStyle(.text)
+                .foregroundStyle(.textPrimary)
                 .font(.custom("HiraginoSans-W3", size: 14))
             Text(jaTitle)
-                .foregroundStyle(.text)
+                .foregroundStyle(.textPrimary)
                 .font(.custom("HiraginoSans-W3", size: 14))
         }
         .padding()

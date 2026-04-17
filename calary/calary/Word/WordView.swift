@@ -20,13 +20,13 @@ struct WordView: View {
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease")
                             .font(.system(size: 20))
-                            .foregroundStyle(.titleText)
+                            .foregroundStyle(.textSecondary)
                     }
                 }
                 .overlay {
-                    Text("単語")
-                        .font(.system(size: 24))
-                        .foregroundStyle(.titleText)
+                    Text("word.title")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.textSecondary)
                         .font(.custom("HiraginoSans-W3", size: 14))
                         .bold()
                     
@@ -59,7 +59,7 @@ struct WordView: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.backgroundBlue)
+            .background(Color.backgroundPrimary)
         }
     }
 }
