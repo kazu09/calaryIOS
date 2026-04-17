@@ -9,10 +9,12 @@ import SwiftUI
 struct WordCardView: View {
     var onCardTap: () -> Void = {}
     var onDiaryTap: () -> Void = {}
+    let word: String
+    let diaryDate: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("book")
+            Text(word)
                 .foregroundStyle(.text)
                 .font(.custom("HiraginoSans-W3", size: 24))
                 .bold()
@@ -23,7 +25,7 @@ struct WordCardView: View {
                 onDiaryTap()
             } label: {
                 HStack(spacing: 4) {
-                    Text("2026-4-24 の日記より")
+                    Text(diaryDate)
                         .foregroundStyle(.diaryCardText)
                         .font(.custom("HiraginoSans-W3", size: 12))
                         .underline()
@@ -51,5 +53,9 @@ struct WordCardView: View {
 }
 
 #Preview {
-    WordCardView()
+    WordCardView(
+        word: "book",
+        diaryDate: "2026-4-24 の日記より"
+
+    )
 }

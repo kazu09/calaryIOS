@@ -7,6 +7,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var cardDate = "April, 30"
+    @State private var checkAnswer = "未回答"
+    @State private var enTitle = "TitleTitleTitle"
+    @State private var jaTitle = "タイトルタイトルタイトル"
+    
     var body: some View {
         ZStack {
             Color.backgroundBlue
@@ -62,8 +67,12 @@ struct HomeView: View {
                 Divider()
                 
                 VStack {
-                    
-                    DiaryCardView()
+                    DiaryCardView(
+                        cardDate: cardDate,
+                        checkAnswer: checkAnswer,
+                        enTitle: enTitle,
+                        jaTitle: jaTitle
+                    )
                 }
                 .padding(16)
                 

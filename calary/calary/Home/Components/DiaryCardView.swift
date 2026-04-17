@@ -7,24 +7,29 @@
 import SwiftUI
 
 struct DiaryCardView: View {
+    let cardDate: String
+    let checkAnswer: String
+    let enTitle: String
+    let jaTitle: String
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack{
-                Text("April, 30")
+                Text(cardDate)
                     .foregroundStyle(.diaryCardText)
                     .font(.custom("HiraginoSans-W3", size: 14))
                     .fontWeight(.bold)
                 Spacer()
-                Text("未回答")
+                Text(checkAnswer)
                     .foregroundStyle(.notAnswertext)
                     .font(.custom("HiraginoSans-W3", size: 14))
                     .fontWeight(.bold)
             }
             .padding(.bottom, 14)
-            Text("TitleTitleTitle")
+            Text(enTitle)
                 .foregroundStyle(.text)
                 .font(.custom("HiraginoSans-W3", size: 14))
-            Text("タイトルタイトルタイトル")
+            Text(jaTitle)
                 .foregroundStyle(.text)
                 .font(.custom("HiraginoSans-W3", size: 14))
         }
@@ -37,5 +42,10 @@ struct DiaryCardView: View {
 }
 
 #Preview {
-    DiaryCardView()
+    DiaryCardView(
+        cardDate: "April, 30",
+        checkAnswer: "未回答",
+        enTitle: "TitleTitleTitle",
+        jaTitle: "タイトルタイトルタイトル"
+    )
 }

@@ -8,7 +8,8 @@ import SwiftUI
 
 struct WordView: View {
     @State private var isShowingDetail = false
-    
+    @State private var word = "book"
+    @State private var diaryDate = "2026-4-24 の日記より"
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
@@ -45,7 +46,9 @@ struct WordView: View {
                     },
                     onDiaryTap: {
                         print("日記詳細へ")
-                    }
+                    },
+                    word: word,
+                    diaryDate: diaryDate
                 )
                 .sheet(isPresented: $isShowingDetail) {
                     Text("ハーフモーダルの中身")
