@@ -1,16 +1,13 @@
 {
   "sourceLanguage" : "ja",
   "strings" : {
+    "2026/4/30" : {
+
+    },
     "2026年4月" : {
 
     },
     "Calary" : {
-
-    },
-    "Hello, Grammar View!" : {
-
-    },
-    "Hello, Settings View!" : {
 
     },
     "tab.grammar" : {
@@ -54,10 +51,29 @@
         }
       }
     },
+    "TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText" : {
+
+    },
+    "word.title" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語"
+          }
+        }
+      }
+    },
     "ハーフモーダルの中身" : {
 
     },
-    "単語" : {
+    "現在完了形（have been）" : {
+
+    },
+    "英文法メモ" : {
+
+    },
+    "設定" : {
 
     }
   },

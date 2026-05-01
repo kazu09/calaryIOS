@@ -20,13 +20,13 @@ struct WordView: View {
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease")
                             .font(.system(size: 20))
-                            .foregroundStyle(.titleText)
+                            .foregroundStyle(.textSecondary)
                     }
                 }
                 .overlay {
-                    Text("単語")
-                        .font(.system(size: 24))
-                        .foregroundStyle(.titleText)
+                    Text("word.title")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.textSecondary)
                         .font(.custom("HiraginoSans-W3", size: 14))
                         .bold()
                     
@@ -38,29 +38,31 @@ struct WordView: View {
                 Divider()
             }
             .background(Color.white)
-            
-            VStack {
-                WordCardView(
-                    onCardTap: {
-                        isShowingDetail = true
-                    },
-                    onDiaryTap: {
-                        print("日記詳細へ")
-                    },
-                    word: word,
-                    diaryDate: diaryDate
-                )
-                .sheet(isPresented: $isShowingDetail) {
-                    Text("ハーフモーダルの中身")
-                        .presentationDetents([.medium])
+            ScrollView{
+                VStack {
+                    WordCardView(
+                        onCardTap: {
+                            isShowingDetail = true
+                        },
+                        onDiaryTap: {
+                            print("日記詳細へ")
+                        },
+                        word: word,
+                        diaryDate: diaryDate
+                    )
+                    .sheet(isPresented: $isShowingDetail) {
+                        Text("ハーフモーダルの中身")
+                            .presentationDetents([.medium])
+                    }
+                    .padding(16)
+                    
+                    Spacer()
                 }
-                .padding(16)
-                
-                Spacer()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.backgroundPrimary)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.backgroundBlue)
         }
+        .background(Color.backgroundPrimary)
     }
 }
 #Preview {

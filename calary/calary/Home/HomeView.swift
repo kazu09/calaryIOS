@@ -14,25 +14,22 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Color.backgroundBlue
-                .ignoresSafeArea()
-            
             VStack(spacing: 0) {
                 HStack {
                     Spacer()
                     
                     Button {
-                    // 設定画面へ
+                        // 設定画面へ
                     } label: {
                         Image(systemName: "gearshape")
                             .font(.system(size: 20))
-                            .foregroundStyle(.titleText)
+                            .foregroundStyle(.textSecondary)
                     }
                 }
                 .overlay {
                     Text("Calary")
                         .font(.system(size: 24))
-                        .foregroundStyle(.titleText)
+                        .foregroundStyle(.textSecondary)
                         .bold()
                         .italic()
                 }
@@ -44,43 +41,44 @@ struct HomeView: View {
                     Button {
                     } label: {
                         Image(systemName: "chevron.left")
-                            .foregroundStyle(.text)
+                            .foregroundStyle(.textPrimary)
                             .padding(.leading,12)
                             .padding(.trailing,4)
                     }
-
+                    
                     Text("2026年4月")
                         .font(.system(size: 24))
-                        .foregroundStyle(.text)
+                        .foregroundStyle(.textPrimary)
                         .bold()
                         .italic()
-
+                    
                     Button {
+                        
                     } label: {
                         Image(systemName: "chevron.right")
-                            .foregroundStyle(.text)
+                            .foregroundStyle(.textPrimary)
                             .padding(.leading,4)
                     }
                 }
                 .padding(.horizontal, 16)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 Divider()
-                
-                VStack {
-                    DiaryCardView(
-                        cardDate: cardDate,
-                        checkAnswer: checkAnswer,
-                        enTitle: enTitle,
-                        jaTitle: jaTitle
-                    )
+                ScrollView {
+                    VStack {
+                        DiaryCardView(
+                            cardDate: cardDate,
+                            checkAnswer: checkAnswer,
+                            enTitle: enTitle,
+                            jaTitle: jaTitle
+                        )
+                    }
+                    .padding(16)
                 }
-                .padding(16)
-                
                 Spacer()
             }
             
-            }
-        }
+        }.background(Color.backgroundPrimary)
+    }
 }
 
 #Preview {

@@ -14,19 +14,19 @@ struct RootTabView: View {
                     Image("home")
                     Text("tab.home")
                 }
-            
+                
             WordView()
                 .tabItem {
                     Image("card")
                     Text("tab.word")
                 }
-            
+                
             GrammarView()
                 .tabItem {
                     Image("book")
                     Text("tab.grammar")
                 }
-
+                
             SettingsView()
                 .tabItem {
                     Image("settings")
@@ -35,7 +35,6 @@ struct RootTabView: View {
         }
     }
 }
-
 
 #Preview {
     RootTabView()

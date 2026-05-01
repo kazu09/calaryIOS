@@ -15,7 +15,7 @@ struct WordCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(word)
-                .foregroundStyle(.text)
+                .foregroundStyle(.textPrimary)
                 .font(.custom("HiraginoSans-W3", size: 24))
                 .bold()
                 .padding(.top, 10)
@@ -26,14 +26,14 @@ struct WordCardView: View {
             } label: {
                 HStack(spacing: 4) {
                     Text(diaryDate)
-                        .foregroundStyle(.diaryCardText)
+                        .foregroundStyle(.textTertiary)
                         .font(.custom("HiraginoSans-W3", size: 12))
                         .underline()
 
                     Image(systemName: "chevron.right")
                         .resizable()
                         .frame(width: 12, height: 12)
-                        .foregroundStyle(.diaryCardText)
+                        .foregroundStyle(.textTertiary)
                 }
                 .padding(.top, 6)
                 .padding(.leading, 12)
