@@ -38,29 +38,31 @@ struct WordView: View {
                 Divider()
             }
             .background(Color.white)
-            
-            VStack {
-                WordCardView(
-                    onCardTap: {
-                        isShowingDetail = true
-                    },
-                    onDiaryTap: {
-                        print("日記詳細へ")
-                    },
-                    word: word,
-                    diaryDate: diaryDate
-                )
-                .sheet(isPresented: $isShowingDetail) {
-                    Text("ハーフモーダルの中身")
-                        .presentationDetents([.medium])
+            ScrollView{
+                VStack {
+                    WordCardView(
+                        onCardTap: {
+                            isShowingDetail = true
+                        },
+                        onDiaryTap: {
+                            print("日記詳細へ")
+                        },
+                        word: word,
+                        diaryDate: diaryDate
+                    )
+                    .sheet(isPresented: $isShowingDetail) {
+                        Text("ハーフモーダルの中身")
+                            .presentationDetents([.medium])
+                    }
+                    .padding(16)
+                    
+                    Spacer()
                 }
-                .padding(16)
-                
-                Spacer()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.backgroundPrimary)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.backgroundPrimary)
         }
+        .background(Color.backgroundPrimary)
     }
 }
 #Preview {

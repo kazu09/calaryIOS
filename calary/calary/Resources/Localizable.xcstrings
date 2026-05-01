@@ -10,9 +10,6 @@
     "Calary" : {
 
     },
-    "Hello, Settings View!" : {
-
-    },
     "tab.grammar" : {
       "localizations" : {
         "ja" : {
@@ -58,7 +55,14 @@
 
     },
     "word.title" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語"
+          }
+        }
+      }
     },
     "ハーフモーダルの中身" : {
 
@@ -67,6 +71,9 @@
 
     },
     "英文法メモ" : {
+
+    },
+    "設定" : {
 
     }
   },

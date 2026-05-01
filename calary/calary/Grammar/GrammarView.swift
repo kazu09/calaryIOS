@@ -36,22 +36,23 @@ struct GrammarView: View {
                 Divider()
             }
             .background(Color.white)
-            
-            VStack {
-                GrammarCardView(
-                    onGrammarCardTap: {
-                        isShowingDetail = true
+            ScrollView {
+                VStack {
+                    GrammarCardView(
+                        onGrammarCardTap: {
+                            isShowingDetail = true
+                        }
+                    )
+                    .padding(16)
+                    .sheet(isPresented: $isShowingDetail) {
+                        Text("ハーフモーダルの中身")
+                            .presentationDetents([.medium])
                     }
-                )
-                .padding(16)
-                .sheet(isPresented: $isShowingDetail) {
-                    Text("ハーフモーダルの中身")
-                        .presentationDetents([.medium])
+                    Spacer()
                 }
-                Spacer()
             }
-            .background(Color.backgroundPrimary)
         }
+        .background(Color.backgroundPrimary)
     }
 }
 

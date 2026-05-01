@@ -63,17 +63,17 @@ struct HomeView: View {
                 .padding(.horizontal, 16)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 Divider()
-                
-                VStack {
-                    DiaryCardView(
-                        cardDate: cardDate,
-                        checkAnswer: checkAnswer,
-                        enTitle: enTitle,
-                        jaTitle: jaTitle
-                    )
+                ScrollView {
+                    VStack {
+                        DiaryCardView(
+                            cardDate: cardDate,
+                            checkAnswer: checkAnswer,
+                            enTitle: enTitle,
+                            jaTitle: jaTitle
+                        )
+                    }
+                    .padding(16)
                 }
-                .padding(16)
-                
                 Spacer()
             }
             
