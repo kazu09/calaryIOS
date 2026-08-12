@@ -11,6 +11,7 @@ struct DiaryCardView: View {
     let checkAnswer: String
     let enTitle: String
     let jaTitle: String
+    var onTap: () -> Void = {}
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -38,6 +39,9 @@ struct DiaryCardView: View {
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 4)
+        .contentShape(RoundedRectangle(cornerRadius: 16))
+        .onTapGesture(perform: onTap)
+        .accessibilityAddTraits(.isButton)
     }
 }
 
