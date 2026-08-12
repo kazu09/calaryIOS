@@ -5,10 +5,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct calaryApp: App {
+    private let modelContainer: ModelContainer
+    private let dependencies: AppDependencies
+
     init() {
+        let modelContainer = AppModelContainer.application()
+        self.modelContainer = modelContainer
+        dependencies = AppDependencies(modelContainer: modelContainer)
+
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
@@ -18,7 +26,8 @@ struct calaryApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            RootTabView()
+            RootTabView(dependencies: dependencies)
         }
+        .modelContainer(modelContainer)
     }
 }
