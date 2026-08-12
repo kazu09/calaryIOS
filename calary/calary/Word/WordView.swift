@@ -10,6 +10,18 @@ struct WordView: View {
     @State private var isShowingDetail = false
     @State private var word = "book"
     @State private var diaryDate = "2026-4-24 の日記より"
+
+    private let meanings = [
+        WordMeaningDisplayValue(
+            japaneseMeaning: "本",
+            partOfSpeech: "名詞"
+        ),
+        WordMeaningDisplayValue(
+            japaneseMeaning: "予約する",
+            partOfSpeech: "動詞"
+        )
+    ]
+
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
@@ -51,8 +63,16 @@ struct WordView: View {
                         diaryDate: diaryDate
                     )
                     .sheet(isPresented: $isShowingDetail) {
-                        Text("ハーフモーダルの中身")
-                            .presentationDetents([.medium])
+                        WordDetailModalView(
+                            word: word,
+                            meanings: meanings,
+                            diaryDate: diaryDate,
+                            onDiaryTap: {
+                                print("日記詳細へ")
+                            }
+                        )
+                        .presentationDetents([.medium, .large])
+                        .presentationDragIndicator(.visible)
                     }
                     .padding(16)
                     

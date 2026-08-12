@@ -7,19 +7,20 @@
 import SwiftUI
 
 struct GrammarCardView: View {
+    let title: String
+    let content: String
+    let updatedDate: String
     var onGrammarCardTap: () -> Void = {}
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("現在完了形（have been）")
+            Text(title)
                 .foregroundStyle(.textTertiary)
                 .font(.custom("HiraginoSans-W6", size: 20))
                 .fontWeight(.bold)
                 .padding(.bottom, 8)
             
-            Text(
-                "TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText"
-            )
+            Text(content)
             .foregroundStyle(.textPrimary)
             .font(.custom("HiraginoSans-W3", size: 14))
             .fontWeight(.bold)
@@ -28,7 +29,7 @@ struct GrammarCardView: View {
             
             HStack {
                 Spacer()
-                Text("2026/4/30")
+                Text(updatedDate)
                     .foregroundStyle(.textPrimary)
                     .font(.custom("HiraginoSans-W3", size: 14))
             }
@@ -46,5 +47,9 @@ struct GrammarCardView: View {
 }
 
 #Preview {
-    GrammarCardView()
+    GrammarCardView(
+        title: "現在完了形（have been）",
+        content: "過去から現在まで続いている状態や経験を表す。",
+        updatedDate: "2026/4/30"
+    )
 }
