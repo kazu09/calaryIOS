@@ -14,7 +14,7 @@ struct DiaryMetaSection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             DatePicker(
-                "日付",
+                "diary.field.date",
                 selection: $entryDate,
                 displayedComponents: .date
             )
@@ -28,12 +28,12 @@ struct DiaryMetaSection: View {
             
             if !diaryTags.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("日記タグ")
+                    Text("diary.field.tag")
                         .font(.custom("HiraginoSans-W6", size: 16))
                         .foregroundStyle(.white)
                     
-                    Picker("日記タグ", selection: $selectedTag) {
-                        Text("タグなし").tag(nil as String?)
+                    Picker("diary.field.tag", selection: $selectedTag) {
+                        Text("diary.field.tag.none").tag(nil as String?)
                         ForEach(diaryTags, id: \.self) { tag in
                             Text(tag).tag(tag as String?)
                         }
@@ -56,13 +56,13 @@ struct DiaryQuestionSection: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("先生への質問")
+            Text("diary.field.teacher_question")
                 .font(.custom("HiraginoSans-W6", size: 16))
                 .foregroundStyle(.white)
             
             ZStack(alignment: .topLeading) {
                 if teacherQuestion.isEmpty {
-                    Text("先生に確認したいことがあれば入力してください")
+                    Text("diary.field.teacher_question.placeholder")
                         .font(.custom("HiraginoSans-W3", size: 15))
                         .foregroundStyle(.textMuted)
                         .padding(.horizontal, 16)

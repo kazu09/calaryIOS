@@ -17,9 +17,17 @@ struct WordAddModalView: View {
     let partOfSpeechOptions: [String]
     let onSave: (WordFormValue) throws -> Void
     
+    /// 新規追加用または編集用の単語入力画面を生成する。
+    /// - Parameter initialValue: 編集対象の初期値。`nil`の場合は新規追加として表示する。
     init(
         initialValue: WordFormValue? = nil,
-        partOfSpeechOptions: [String] = ["名詞", "動詞", "形容詞", "副詞", "その他"],
+        partOfSpeechOptions: [String] = [
+            String(localized: "word.part_of_speech.noun"),
+            String(localized: "word.part_of_speech.verb"),
+            String(localized: "word.part_of_speech.adjective"),
+            String(localized: "word.part_of_speech.adverb"),
+            String(localized: "word.part_of_speech.other")
+        ],
         onSave: @escaping (WordFormValue) throws -> Void = { _ in }
     ) {
         _word = State(initialValue: initialValue?.word ?? "")
@@ -59,7 +67,7 @@ struct WordAddModalView: View {
                     Button {
                         entries.append(WordEntryDraft())
                     } label: {
-                        Label("意味を追加", systemImage: "plus.circle.fill")
+                        Label("word.meaning.add.action", systemImage: "plus.circle.fill")
                             .font(.custom("HiraginoSans-W6", size: 15))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 13)
@@ -73,17 +81,21 @@ struct WordAddModalView: View {
             }
             .background(Color.backgroundPrimary)
             .scrollDismissesKeyboard(.interactively)
-            .navigationTitle(isEditing ? "単語を編集" : "単語を追加")
+            .navigationTitle(
+                isEditing
+                    ? String(localized: "word.edit.title")
+                    : String(localized: "word.add.title")
+            )
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル") {
+                    Button("common.cancel") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("保存") {
+                    Button("common.save") {
                         save()
                     }
                     .fontWeight(.semibold)
@@ -92,13 +104,13 @@ struct WordAddModalView: View {
             }
         }
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(errorMessage ?? "")
         }
@@ -108,11 +120,11 @@ struct WordAddModalView: View {
 private extension WordAddModalView {
     var wordSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("英単語")
+            Text("word.field.word")
                 .font(.custom("HiraginoSans-W6", size: 15))
                 .foregroundStyle(.textPrimary)
             
-            TextField("例：book", text: $word)
+            TextField("word.field.word.placeholder", text: $word)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .font(.custom("HiraginoSans-W3", size: 17))
@@ -161,7 +173,7 @@ private extension WordAddModalView {
             dismiss()
         } catch {
             errorMessage = String(
-                localized: "保存できませんでした。時間をおいて、もう一度お試しください。"
+                localized: "common.error.save.message"
             )
         }
     }

@@ -7,15 +7,21 @@
 import Foundation
 import SwiftData
 
-/// 英単語に対する「日本語訳」と「品詞」の1組を保存するモデル。
 @Model
 final class VocabularyMeaning {
+    /// 単語の意味を一意に識別するID
     @Attribute(.unique) var id: UUID
+    /// 英単語に対する日本語訳
     var japaneseMeaning: String
+    /// この日本語訳に対応する品詞
     var partOfSpeech: String?
+    /// 同じ単語カードに登録された意味の中での表示順
     var displayOrder: Int
+    /// 作成日時
     var createdAt: Date
+    /// 最終更新日時
     var updatedAt: Date
+    /// この意味を所有する単語カード
     var card: VocabularyCard?
     
     /// 単語の意味を生成する

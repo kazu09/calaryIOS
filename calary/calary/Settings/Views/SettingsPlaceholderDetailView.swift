@@ -6,6 +6,7 @@
 
 import SwiftUI
 
+/// 未実装の設定項目について説明を表示する仮の詳細画面。
 struct SettingsPlaceholderDetailView: View {
     let title: String
     let description: String

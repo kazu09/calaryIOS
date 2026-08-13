@@ -10,6 +10,7 @@ import SwiftData
 
 @MainActor
 protocol DebugDatabaseService {
+    /// 全モデルの保存内容をXcodeコンソールへ出力する
     func dumpToConsole() throws
 }
 
@@ -21,6 +22,7 @@ final class SwiftDataDebugDatabaseService: DebugDatabaseService {
         self.modelContext = modelContext
     }
     
+    /// 各モデルの件数、属性、関連先IDをXcodeコンソールへ出力する
     func dumpToConsole() throws {
         let diaries = try modelContext.fetch(FetchDescriptor<Diary>())
         let cards = try modelContext.fetch(FetchDescriptor<VocabularyCard>())

@@ -11,25 +11,33 @@ import SwiftData
 // TODO: 現在のMVPでは各画面が文字列を直接保存しているため、このモデルはまだ使用していない。
 @Model
 final class Tag {
+    /// タグを一意に識別するID
     @Attribute(.unique) var id: UUID
+    /// 画面へ表示するタグ名
     var name: String
+    /// タグの用途。日記分類は`diary`、品詞は`part_of_speech`
     var tagType: String
+    /// タグの表示色を表すカラーコード
     var colorCode: String?
+    /// 画面の選択肢として使用できるかどうか
     var isActive: Bool
+    /// 同じ用途のタグ内での表示順
     var displayOrder: Int
+    /// 作成日時
     var createdAt: Date
+    /// 最終更新日時
     var updatedAt: Date
     
-    /// 日記分類または品詞の選択肢を生成する。
+    /// 日記分類または品詞の選択肢を生成する
     /// - Parameters:
-    ///   - id: タグを一意に識別するID。
-    ///   - name: 画面へ表示するタグ名。
-    ///   - tagType: タグの用途。`diary`または`part_of_speech`。
-    ///   - colorCode: タグの表示色を表すカラーコード。
-    ///   - isActive: 画面の選択肢として使用できるかどうか。
-    ///   - displayOrder: 同じ種類のタグ内での表示順。
-    ///   - createdAt: 作成日時。
-    ///   - updatedAt: 最終更新日時。
+    ///   - id: タグを一意に識別するID
+    ///   - name: 画面へ表示するタグ名
+    ///   - tagType: タグの用途。`diary`または`part_of_speech`
+    ///   - colorCode: タグの表示色を表すカラーコード
+    ///   - isActive: 画面の選択肢として使用できるかどうか
+    ///   - displayOrder: 同じ種類のタグ内での表示順
+    ///   - createdAt: 作成日時
+    ///   - updatedAt: 最終更新日時
     init(
         id: UUID = UUID(),
         name: String,

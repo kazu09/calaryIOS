@@ -77,13 +77,13 @@ struct HomeView: View {
         }
         .task { viewModel.load() }
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
                 set: { if !$0 { viewModel.errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(viewModel.errorMessage ?? "")
         }
@@ -103,7 +103,7 @@ private extension HomeView {
             }
         }
         .overlay {
-            Text("Calary")
+            Text("app.name")
                 .font(.system(size: 24))
                 .foregroundStyle(.textSecondary)
                 .bold()
@@ -145,9 +145,9 @@ private extension HomeView {
     
     var emptyState: some View {
         ContentUnavailableView(
-            "日記がありません",
+            "diary.empty.title",
             systemImage: "book.pages",
-            description: Text("右下の＋から日記を書いてみよう！")
+            description: Text("diary.empty.message")
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -168,7 +168,7 @@ private extension HomeView {
                         .clipShape(Circle())
                         .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 4)
                 }
-                .accessibilityLabel("日記を新規作成")
+                .accessibilityLabel("diary.create.action")
                 .padding(24)
             }
         }

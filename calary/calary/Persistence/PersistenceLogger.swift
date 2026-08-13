@@ -8,18 +8,21 @@ import Foundation
 import OSLog
 import SwiftData
 
+/// 永続化ログへ記録するデータ操作の種類。
 enum PersistenceAction: String {
     case create = "CREATE"
     case update = "UPDATE"
     case delete = "DELETE"
 }
 
+/// SwiftDataの保存結果をXcodeコンソールへ出力するロガー。
 enum PersistenceLogger {
     private static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier ?? "calary",
         category: "Persistence"
     )
     
+    /// 保存に成功した操作と対象データの詳細を記録する。
     static func success(
         action: PersistenceAction,
         entity: String,
@@ -34,6 +37,7 @@ enum PersistenceLogger {
 #endif
     }
     
+    /// 保存に失敗した操作、対象データ、エラー内容を記録する。
     static func failure(
         action: PersistenceAction,
         entity: String,
@@ -56,7 +60,9 @@ enum PersistenceLogger {
     }
 }
 
+/// Optional文字列を永続化ログ向けの表現へ変換する。
 enum PersistenceLogValue {
+    /// 値を引用符で囲み、改行などをエスケープして返す。`nil`は文字列`nil`として返す。
     static func string(_ value: String?) -> String {
         guard let value else { return "nil" }
         let escaped = value
@@ -69,6 +75,9 @@ enum PersistenceLogValue {
 }
 
 extension ModelContext {
+    /// コンテキストを保存し、成否とデータの詳細をログへ記録する
+    ///
+    /// 保存に失敗した場合は未保存の変更をロールバックし、元のエラーを呼び出し元へ返す
     func saveWithLog(
         action: PersistenceAction,
         entity: String,

@@ -48,7 +48,7 @@ struct WordDetailModalView: View {
                                 .font(.system(size: 16, weight: .semibold))
                             
                             VStack(alignment: .leading, spacing: 3) {
-                                Text("登録元の日記")
+                                Text("word.source_diary.title")
                                     .font(.custom("HiraginoSans-W3", size: 12))
                                     .foregroundStyle(.textTertiary)
                                 
@@ -68,17 +68,17 @@ struct WordDetailModalView: View {
                 .padding(16)
             }
             .background(Color.backgroundPrimary)
-            .navigationTitle("単語詳細")
+            .navigationTitle("word.detail.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("閉じる") {
+                    Button("common.close") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("編集") {
+                    Button("common.edit") {
                         isShowingEditor = true
                     }
                 }
@@ -93,13 +93,13 @@ struct WordDetailModalView: View {
             .presentationDragIndicator(.visible)
         }
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
                 set: { if !$0 { viewModel.errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(viewModel.errorMessage ?? "")
         }

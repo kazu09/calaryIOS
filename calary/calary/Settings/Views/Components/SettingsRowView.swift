@@ -6,6 +6,7 @@
 
 import SwiftUI
 
+/// アイコン・タイトル・説明・遷移表示を統一した設定項目の行。
 struct SettingsRowView: View {
     let systemImageName: String
     let title: String

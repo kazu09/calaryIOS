@@ -9,13 +9,33 @@ import SwiftData
 
 @MainActor
 protocol DiaryRepository {
+    /// 保存されている日記を学習日の降順で取得する
+    /// - Returns: 学習日の新しい順に並んだ日記
     func fetchAll() throws -> [Diary]
+
+    /// 入力内容から日記を作成して保存する
+    /// - Parameter value: 日記作成画面で入力された値
+    /// - Returns: 保存された日記。
     func create(from value: DiaryFormValue) throws -> Diary
+
+    /// 既存の日記を入力内容で更新して保存する
+    /// - Parameters:
+    ///   - diary: 更新対象の日記
+    ///   - value: 日記編集画面で入力された値
     func update(_ diary: Diary, from value: DiaryFormValue) throws
+
+    /// 日記を削除する。
+    ///
+    /// 日記に属する単語カードはSwiftDataのcascade設定により同時に削除される
+    /// - Parameter diary: 削除対象の日記
     func delete(_ diary: Diary) throws
+
+    /// 先生への質問状態を`open`と`resolved`の間で切り替える
+    /// - Parameter diary: 質問状態を変更する日記
     func toggleQuestionStatus(for diary: Diary) throws
 }
 
+/// `DiaryRepository`をSwiftDataで実装するRepository
 @MainActor
 final class SwiftDataDiaryRepository: DiaryRepository {
     private let modelContext: ModelContext

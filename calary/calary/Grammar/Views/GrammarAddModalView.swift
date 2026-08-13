@@ -6,6 +6,7 @@
 
 import SwiftUI
 
+/// 英文法メモのタイトルと本文を追加または編集するモーダル画面
 struct GrammarAddModalView: View {
     @Environment(\.dismiss) private var dismiss
     
@@ -16,6 +17,8 @@ struct GrammarAddModalView: View {
     let isEditing: Bool
     let onSave: (GrammarFormValue) throws -> Void
     
+    /// 新規追加用または編集用の英文法メモ入力画面を生成する
+    /// - Parameter initialValue: 編集対象の初期値。`nil`の場合は新規追加として表示
     init(
         initialValue: GrammarFormValue? = nil,
         onSave: @escaping (GrammarFormValue) throws -> Void = { _ in }
@@ -31,15 +34,15 @@ struct GrammarAddModalView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     inputSection(
-                        label: "タイトル",
-                        placeholder: "例：現在完了形（have been）",
+                        label: String(localized: "grammar.field.title"),
+                        placeholder: String(localized: "grammar.field.title.placeholder"),
                         text: $title,
                         minHeight: 52
                     )
                     
                     inputSection(
-                        label: "メモ",
-                        placeholder: "文法の使い方や例文を入力してください",
+                        label: String(localized: "grammar.field.content"),
+                        placeholder: String(localized: "grammar.field.content.placeholder"),
                         text: $content,
                         minHeight: 240,
                         usesEditor: true
@@ -49,17 +52,21 @@ struct GrammarAddModalView: View {
             }
             .background(Color.backgroundPrimary)
             .scrollDismissesKeyboard(.interactively)
-            .navigationTitle(isEditing ? "英文法メモを編集" : "英文法メモを追加")
+            .navigationTitle(
+                isEditing
+                    ? String(localized: "grammar.edit.title")
+                    : String(localized: "grammar.add.title")
+            )
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル") {
+                    Button("common.cancel") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("保存") {
+                    Button("common.save") {
                         save()
                     }
                     .fontWeight(.semibold)
@@ -68,13 +75,13 @@ struct GrammarAddModalView: View {
             }
         }
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(errorMessage ?? "")
         }
@@ -145,7 +152,7 @@ private extension GrammarAddModalView {
             dismiss()
         } catch {
             errorMessage = String(
-                localized: "保存できませんでした。時間をおいて、もう一度お試しください。"
+                localized: "common.error.save.message"
             )
         }
     }

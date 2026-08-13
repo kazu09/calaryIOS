@@ -20,13 +20,14 @@ final class DebugMenuViewModel {
         self.databaseService = databaseService
     }
     
+    /// DB出力を実行し、成功または失敗の結果を画面表示用メッセージへ反映させる
     func dumpDatabaseToConsole() {
         do {
             try databaseService.dumpToConsole()
-            alertTitle = "ログ出力完了"
-            alertMessage = "XcodeコンソールへDBの内容を出力しました。"
+            alertTitle = String(localized: "debug.database.dump.success.title")
+            alertMessage = String(localized: "debug.database.dump.success.message")
         } catch {
-            alertTitle = "ログ出力エラー"
+            alertTitle = String(localized: "debug.database.dump.error.title")
             alertMessage = error.localizedDescription
         }
     }

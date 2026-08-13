@@ -9,8 +9,21 @@ import SwiftData
 
 @MainActor
 protocol VocabularyRepository {
+    /// 保存されている単語カードを作成日の降順で取得
+    /// - Returns: 作成日の新しい順に並んだ単語カード
     func fetchAll() throws -> [VocabularyCard]
+
+    /// 保存済みの日記へ単語カードを追加
+    /// - Parameters:
+    ///   - value: 英単語と複数の意味・品詞を含む入力値
+    ///   - diary: 単語カードの登録元となる日記
+    /// - Returns: 保存された単語カード
     func create(from value: WordFormValue, diary: Diary) throws -> VocabularyCard
+
+    /// 既存の単語カードと意味一覧を入力内容で置き換える
+    /// - Parameters:
+    ///   - card: 更新対象の単語カード
+    ///   - value: 編集後の英単語と意味・品詞
     func update(_ card: VocabularyCard, from value: WordFormValue) throws
 }
 

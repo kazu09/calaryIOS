@@ -34,33 +34,42 @@ struct DiaryDetailView: View {
                         onAddGrammar: {}
                     )
                     
-                    textCard(title: "English", text: viewModel.diary.englishText)
-                    textCard(title: "日本語", text: viewModel.diary.japaneseText)
+                    textCard(
+                        title: String(localized: "diary.field.english"),
+                        text: viewModel.diary.englishText
+                    )
+                    textCard(
+                        title: String(localized: "diary.field.japanese"),
+                        text: viewModel.diary.japaneseText
+                    )
                     
                     if let teacherQuestion = viewModel.diary.teacherQuestion,
                        !teacherQuestion.isEmpty {
-                        textCard(title: "先生への質問", text: teacherQuestion)
+                        textCard(
+                            title: String(localized: "diary.field.teacher_question"),
+                            text: teacherQuestion
+                        )
                     }
                 }
                 .padding(16)
             }
             .background(Color.backgroundPrimary)
-            .navigationTitle("日記詳細")
+            .navigationTitle("diary.detail.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("閉じる") {
+                    Button("common.close") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Button("編集") {
+                        Button("common.edit") {
                             isShowingEditor = true
                         }
                         
-                        Button("削除", role: .destructive) {
+                        Button("common.delete", role: .destructive) {
                             isShowingDeleteConfirmation = true
                         }
                     } label: {
@@ -82,27 +91,27 @@ struct DiaryDetailView: View {
             )
         }
         .confirmationDialog(
-            "この日記を削除しますか？",
+            "diary.delete.confirmation.title",
             isPresented: $isShowingDeleteConfirmation,
             titleVisibility: .visible
         ) {
-            Button("削除", role: .destructive) {
+            Button("common.delete", role: .destructive) {
                 if viewModel.deleteDiary() {
                     dismiss()
                 }
             }
-            Button("キャンセル", role: .cancel) {}
+            Button("common.cancel", role: .cancel) {}
         } message: {
-            Text("日記に登録した単語も削除されます。")
+            Text("diary.delete.confirmation.message")
         }
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
                 set: { if !$0 { viewModel.errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(viewModel.errorMessage ?? "")
         }
@@ -140,7 +149,7 @@ private extension DiaryDetailView {
                         .clipShape(Capsule())
                     }
                     .buttonStyle(.plain)
-                    .accessibilityHint("タップして回答状態を切り替えます")
+                    .accessibilityHint("diary.question.status.toggle.hint")
                 }
             }
             

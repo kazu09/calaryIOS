@@ -42,7 +42,7 @@ struct GrammarDetailModalView: View {
                     .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 3)
                     
                     Label(
-                        "更新日：\(viewModel.note.updatedAt.formatted(date: .numeric, time: .omitted))",
+                        "grammar.detail.updated_at \(viewModel.note.updatedAt.formatted(date: .numeric, time: .omitted))",
                         systemImage: "clock"
                     )
                     .font(.custom("HiraginoSans-W3", size: 12))
@@ -52,22 +52,22 @@ struct GrammarDetailModalView: View {
                 .padding(16)
             }
             .background(Color.backgroundPrimary)
-            .navigationTitle("英文法メモ詳細")
+            .navigationTitle("grammar.detail.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("閉じる") {
+                    Button("common.close") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
                     Menu {
-                        Button("編集") {
+                        Button("common.edit") {
                             isShowingEditor = true
                         }
                         
-                        Button("削除", role: .destructive) {
+                        Button("common.delete", role: .destructive) {
                             isShowingDeleteConfirmation = true
                         }
                     } label: {
@@ -88,25 +88,25 @@ struct GrammarDetailModalView: View {
             .presentationDragIndicator(.visible)
         }
         .confirmationDialog(
-            "この英文法メモを削除しますか？",
+            "grammar.delete.confirmation.title",
             isPresented: $isShowingDeleteConfirmation,
             titleVisibility: .visible
         ) {
-            Button("削除", role: .destructive) {
+            Button("common.delete", role: .destructive) {
                 if viewModel.deleteNote() {
                     dismiss()
                 }
             }
-            Button("キャンセル", role: .cancel) {}
+            Button("common.cancel", role: .cancel) {}
         }
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
                 set: { if !$0 { viewModel.errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(viewModel.errorMessage ?? "")
         }

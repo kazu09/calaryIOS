@@ -20,15 +20,15 @@ struct DebugMenuView: View {
                 Button {
                     viewModel.dumpDatabaseToConsole()
                 } label: {
-                    Label("DBの中身をログ出力", systemImage: "terminal")
+                    Label("debug.database.dump.action", systemImage: "terminal")
                 }
             } header: {
-                Text("データベース")
+                Text("debug.database.section.title")
             } footer: {
-                Text("SwiftDataに保存されている全データをXcodeコンソールへ出力します。")
+                Text("debug.database.section.footer")
             }
         }
-        .navigationTitle("デバッグ")
+        .navigationTitle("debug.title")
         .navigationBarTitleDisplayMode(.inline)
         .alert(
             viewModel.alertTitle,
@@ -37,7 +37,7 @@ struct DebugMenuView: View {
                 set: { if !$0 { viewModel.alertMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(viewModel.alertMessage ?? "")
         }
