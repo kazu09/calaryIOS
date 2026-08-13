@@ -28,10 +28,19 @@
 - メモの一覧・詳細表示
 - メモの編集・削除
 
+### 設定
+
+- 本アプリの各種設定
+
 ### データ保存
 
 - SwiftDataによる端末内へのローカル保存
 - Xcode Previewでは実データに影響しないインメモリデータベースを使用
+
+## アプリUI
+
+<img width="600" alt="スクリーンショット 2026-08-13 21 56 40" src="https://github.com/user-attachments/assets/48f8794f-59d5-4bcb-af80-30a3b90f6c0e" />
+
 
 ## 技術構成
 
@@ -39,7 +48,6 @@
 - SwiftUI
 - SwiftData
 - Repositoryパターン
-- XCTest / XCUITest
 
 ## 動作環境
 
