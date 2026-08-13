@@ -16,6 +16,8 @@ struct AppDependencies {
     let debugDatabaseService: any DebugDatabaseService
 #endif
     
+    /// 指定されたSwiftDataコンテナからアプリの依存関係を生成する。
+    /// - Parameter modelContainer: Repositoryが使用するSwiftDataコンテナ。
     init(modelContainer: ModelContainer) {
         self.modelContainer = modelContainer
         let context = modelContainer.mainContext
@@ -27,6 +29,8 @@ struct AppDependencies {
 #endif
     }
     
+    /// Preview専用のインメモリDBを使用する依存関係を生成する。
+    /// - Returns: Preview終了時に破棄される保存領域を持つ依存関係。
     static func preview() -> AppDependencies {
         AppDependencies(modelContainer: AppModelContainer.preview())
     }

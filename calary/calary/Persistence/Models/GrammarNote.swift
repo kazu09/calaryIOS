@@ -7,17 +7,22 @@
 import Foundation
 import SwiftData
 
-/// 英文法メモを保持するテーブル
 @Model
 final class GrammarNote {
+    /// 英文法メモを一意に識別するID
     @Attribute(.unique) var id: UUID
+    /// 画面へ表示するタイトル
     var title: String
+    /// 文法の説明や例文を記録する本文
     var content: String
+    /// 作成日時
     var createdAt: Date
+    /// 最終更新日時
     var updatedAt: Date
+    /// 関連する日記。MVPでは英文法メモを単独で扱うため通常は`nil`
     var diary: Diary?
     
-    /// 英文法メモを保持する
+    /// 英文法メモを生成する。
     /// - Parameters:
     ///   - id: 文法を一意に識別するID
     ///   - title: タイトル

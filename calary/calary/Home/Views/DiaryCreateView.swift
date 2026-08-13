@@ -20,6 +20,8 @@ struct DiaryCreateView: View {
     let diaryTags: [String]
     let onSave: (DiaryFormValue) throws -> Void
     
+    /// 新規作成用または編集用の日記入力画面を生成
+    /// - Parameter initialValue: 編集対象の初期値。`nil`の場合は新規作成として表示
     init(
         initialValue: DiaryFormValue? = nil,
         diaryTags: [String] = [],
@@ -48,14 +50,14 @@ struct DiaryCreateView: View {
                     )
                     
                     DiaryTextSection(
-                        title: "English",
-                        placeholder: "英語で日記を書いてください",
+                        title: String(localized: "diary.field.english"),
+                        placeholder: String(localized: "diary.field.english.placeholder"),
                         text: $englishText
                     )
                     
                     DiaryTextSection(
-                        title: "日本語",
-                        placeholder: "日本語で日記を書いてください",
+                        title: String(localized: "diary.field.japanese"),
+                        placeholder: String(localized: "diary.field.japanese.placeholder"),
                         text: $japaneseText
                     )
                     
@@ -68,13 +70,13 @@ struct DiaryCreateView: View {
         .background(diaryBackground.ignoresSafeArea())
         .toolbar(.hidden, for: .navigationBar)
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(errorMessage ?? "")
         }
@@ -102,7 +104,7 @@ private extension DiaryCreateView {
     
     var header: some View {
         HStack(spacing: 12) {
-            Button("キャンセル") {
+            Button("common.cancel") {
                 dismiss()
             }
             .font(.custom("HiraginoSans-W3", size: 14))
@@ -110,13 +112,17 @@ private extension DiaryCreateView {
             
             Spacer()
             
-            Text(isEditing ? "日記を編集" : "日記を新規作成")
+            Text(
+                isEditing
+                    ? String(localized: "diary.edit.title")
+                    : String(localized: "diary.create.title")
+            )
                 .font(.custom("HiraginoSans-W6", size: 17))
                 .foregroundStyle(.white)
             
             Spacer()
             
-            Button("保存") {
+            Button("common.save") {
                 save()
             }
             .font(.custom("HiraginoSans-W6", size: 14))
@@ -142,7 +148,7 @@ private extension DiaryCreateView {
             dismiss()
         } catch {
             errorMessage = String(
-                localized: "保存できませんでした。時間をおいて、もう一度お試しください。"
+                localized: "common.error.save.message"
             )
         }
     }

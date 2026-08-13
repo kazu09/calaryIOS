@@ -15,14 +15,14 @@ struct DiaryActionBar: View {
     var body: some View {
         HStack(spacing: 12) {
             actionButton(
-                title: "単語を追加",
+                title: String(localized: "word.add.action"),
                 systemImage: "plus",
                 action: onAddWord
             )
             
             if showsGrammarAction {
                 actionButton(
-                    title: "英文法メモを追加",
+                    title: String(localized: "grammar.add.action"),
                     systemImage: "plus",
                     action: onAddGrammar
                 )

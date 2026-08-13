@@ -32,7 +32,7 @@ struct WordEntryRowView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Text("意味 \(number)")
+                Text("word.meaning.number \(number)")
                     .font(.custom("HiraginoSans-W6", size: 15))
                     .foregroundStyle(.textPrimary)
                 
@@ -43,16 +43,16 @@ struct WordEntryRowView: View {
                         Image(systemName: "trash")
                             .font(.system(size: 14, weight: .semibold))
                     }
-                    .accessibilityLabel("意味\(number)を削除")
+                    .accessibilityLabel("word.meaning.delete.label \(number)")
                 }
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("日本語訳")
+                Text("word.field.japanese_meaning")
                     .font(.custom("HiraginoSans-W3", size: 12))
                     .foregroundStyle(.textTertiary)
                 
-                TextField("例：本、予約する", text: $entry.japaneseMeaning)
+                TextField("word.field.japanese_meaning.placeholder", text: $entry.japaneseMeaning)
                     .font(.custom("HiraginoSans-W3", size: 15))
                     .foregroundStyle(.textPrimary)
                     .padding(.horizontal, 14)
@@ -62,12 +62,12 @@ struct WordEntryRowView: View {
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("品詞（任意）")
+                Text("word.field.part_of_speech.optional")
                     .font(.custom("HiraginoSans-W3", size: 12))
                     .foregroundStyle(.textTertiary)
                 
-                Picker("品詞", selection: $entry.partOfSpeech) {
-                    Text("選択なし").tag(nil as String?)
+                Picker("word.field.part_of_speech", selection: $entry.partOfSpeech) {
+                    Text("common.selection.none").tag(nil as String?)
                     ForEach(partOfSpeechOptions, id: \.self) { option in
                         Text(option).tag(option as String?)
                     }

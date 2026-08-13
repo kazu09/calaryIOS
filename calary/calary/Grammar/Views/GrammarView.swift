@@ -25,9 +25,9 @@ struct GrammarView: View {
                 
                 if viewModel.notes.isEmpty {
                     ContentUnavailableView(
-                        "英文法メモがありません",
+                        "grammar.empty.title",
                         systemImage: "book.closed",
-                        description: Text("右下の＋からメモを追加してみよう！")
+                        description: Text("grammar.empty.message")
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
@@ -75,13 +75,13 @@ struct GrammarView: View {
         }
         .task { viewModel.load() }
         .alert(
-            "保存エラー",
+            "common.error.save.title",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
                 set: { if !$0 { viewModel.errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(viewModel.errorMessage ?? "")
         }
@@ -102,7 +102,7 @@ private extension GrammarView {
                 }
             }
             .overlay {
-                Text("英文法メモ")
+                Text("grammar.title")
                     .font(.custom("HiraginoSans-W6", size: 18))
                     .foregroundStyle(.textSecondary)
             }
@@ -131,7 +131,7 @@ private extension GrammarView {
                         .clipShape(Circle())
                         .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 4)
                 }
-                .accessibilityLabel("英文法メモを追加")
+                .accessibilityLabel("grammar.add.action")
                 .padding(24)
             }
         }

@@ -24,7 +24,7 @@ struct WordView: View {
             if viewModel.cards.isEmpty {
                 ContentUnavailableView {
                     Label {
-                        Text("単語がありません")
+                        Text("word.empty.title")
                     } icon: {
                         Image("card")
                             .renderingMode(.template)
@@ -33,7 +33,7 @@ struct WordView: View {
                             .frame(width: 64, height: 64)
                     }
                 } description: {
-                    Text("保存済みの日記詳細から単語を追加しよう！")
+                    Text("word.empty.message")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
@@ -72,13 +72,13 @@ struct WordView: View {
         }
         .task { viewModel.load() }
         .alert(
-            "読み込みエラー",
+            "common.error.load.title",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
                 set: { if !$0 { viewModel.errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button("common.ok", role: .cancel) {}
         } message: {
             Text(viewModel.errorMessage ?? "")
         }

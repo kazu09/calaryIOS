@@ -7,6 +7,7 @@
 import SwiftUI
 
 // MARK: View
+/// アプリ設定と、DEBUGビルド時の開発者メニューへの入口を表示する画面。
 struct SettingsView: View {
     let dependencies: AppDependencies
     
@@ -14,7 +15,7 @@ struct SettingsView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 VStack(spacing: 0) {
-                    Text("設定")
+                    Text("settings.title")
                         .font(.system(size: 20))
                         .foregroundStyle(.textSecondary)
                         .fontWeight(.bold)
@@ -60,27 +61,27 @@ struct SettingsView: View {
                         sectionCard {
                             cardView(
                                 icon: "info.circle",
-                                title: "アプリバージョン",
-                                description: "現在のアプリバージョンを確認できます。",
-                                detailDescription: "現在のバージョン情報を確認する仮画面です。"
+                                title: String(localized: "settings.app_version.title"),
+                                description: String(localized: "settings.app_version.description"),
+                                detailDescription: String(localized: "settings.app_version.detail")
                             )
                             
                             rowDivider
                             
                             cardView(
                                 icon: "doc.text",
-                                title: "利用規約",
-                                description: "アプリの利用条件やポリシーを確認できます。",
-                                detailDescription: "利用規約を確認する仮画面です。"
+                                title: String(localized: "settings.terms.title"),
+                                description: String(localized: "settings.terms.description"),
+                                detailDescription: String(localized: "settings.terms.detail")
                             )
                             
                             rowDivider
                             
                             cardView(
                                 icon: "questionmark.circle",
-                                title: "ヘルプ",
-                                description: "使い方やよくある質問を確認できます。",
-                                detailDescription: "使い方やよくある質問を確認する仮画面です。"
+                                title: String(localized: "settings.help.title"),
+                                description: String(localized: "settings.help.description"),
+                                detailDescription: String(localized: "settings.help.detail")
                             )
                         }
                         // デバッグモードでのみ表示
@@ -95,8 +96,8 @@ struct SettingsView: View {
                             } label: {
                                 SettingsRowView(
                                     systemImageName: "ladybug",
-                                    title: "デバッグ",
-                                    description: "開発者用のデバッグ画面に遷移します。"
+                                    title: String(localized: "debug.title"),
+                                    description: String(localized: "settings.debug.description")
                                 )
                             }
                             .buttonStyle(.plain)

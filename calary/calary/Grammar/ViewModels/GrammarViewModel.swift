@@ -19,6 +19,7 @@ final class GrammarViewModel {
         self.repository = repository
     }
     
+    /// Repositoryから英文法メモ一覧を再取得
     func load() {
         do {
             notes = try repository.fetchAll()
@@ -28,6 +29,9 @@ final class GrammarViewModel {
         }
     }
     
+    /// 英文法メモを作成し、一覧を再取得する
+    /// - Parameter value: タイトルと本文を含む入力値
+    /// - Throws: Repositoryによる保存に失敗した場合のエラー
     func createNote(from value: GrammarFormValue) throws {
         _ = try repository.create(from: value)
         load()
